@@ -26,6 +26,8 @@ class SplashFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // 将布局视图绑定到架构组件
+        // https://developer.android.google.cn/topic/libraries/data-binding/architecture?hl=zh-cn
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
@@ -46,7 +48,7 @@ class SplashFragment : Fragment() {
     private fun requestData() {
         job?.cancel()
         job = lifecycleScope.launchWhenResumed {
-            viewModel.requestData(requireContext(), viewLifecycleOwner)
+            viewModel.requestData(requireContext(), viewLifecycleOwner, view)
         }
     }
 }

@@ -2,18 +2,22 @@ package com.tyhoo.android.nba.viewmodel
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.findNavController
 import com.tyhoo.android.nba.R
 import com.tyhoo.android.nba.base.TAG
 import com.tyhoo.android.nba.data.repository.SplashRepository
+import com.tyhoo.android.nba.ui.splash.SplashFragmentDirections
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +26,7 @@ class SplashViewModel @Inject constructor(
     private val repository: SplashRepository
 ) : ViewModel() {
 
-    fun requestData(context: Context, owner: LifecycleOwner) {
+    fun requestData(context: Context, owner: LifecycleOwner, view: View?) {
         viewModelScope.launch {
             val results = listOf(
                 async { playersObserver(context, owner) },
@@ -31,6 +35,11 @@ class SplashViewModel @Inject constructor(
             results.awaitAll()
 
             _loadingContent.value = context.getString(R.string.splash_load_finish)
+            delay(1000)
+
+            SplashFragmentDirections.actionSplashFragmentToHomeFragment().let { direction ->
+                view?.findNavController()?.navigate(direction)
+            }
         }
     }
 
