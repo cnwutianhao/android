@@ -7,4 +7,7 @@
 
     <string name="home_tab_players">球员</string>
     <string name="home_tab_teams">球队</string>
+
+    <string name="players_player_info">球队：%s \n球衣：%s号，身高：%s米，\n体重：%s，位置：%s</string>
+    <string name="players_player_avatar_url">https://china.nba.cn/media/img/players/head/260x190/%s.png</string>
 </resources>

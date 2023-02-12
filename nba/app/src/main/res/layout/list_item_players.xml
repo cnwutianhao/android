@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="player"
+            type="com.tyhoo.android.nba.data.db.PlayerEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/players_item_avatar"
+            android:layout_width="130dp"
+            android:layout_height="95dp"
+            android:layout_margin="8dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:playersPlayerAvatarFromPlayerId="@{player.playerId}" />
+
+        <TextView
+            android:id="@+id/players_item_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{player.playerName}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/players_item_avatar"
+            app:layout_constraintTop_toTopOf="@+id/players_item_avatar"
+            tools:text="勒布朗 詹姆斯" />
+
+        <TextView
+            android:id="@+id/players_item_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/players_player_info, player.teamCity+player.teamName, player.playerJerseyNo, player.playerHeight, player.playerWeight,player.playerPosition)}"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/players_item_name"
+            app:layout_constraintTop_toBottomOf="@+id/players_item_name"
+            tools:text="球队：洛杉矶湖人 \n球衣：6号，身高：2.06米，\n体重：113.4 公斤，位置：前锋" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
