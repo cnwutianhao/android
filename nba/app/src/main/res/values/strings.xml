@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">nba</string>
+    <string name="app_name">NBA</string>
+
+    <string name="splash_load_players">正在加载球员数据</string>
+    <string name="splash_load_teams">正在加载球队数据</string>
+    <string name="splash_load_finish">数据加载完成</string>
 </resources>
