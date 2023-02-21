@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="team"
+            type="com.tyhoo.android.nba.data.db.TeamEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/teams_item_logo"
+            android:layout_width="162dp"
+            android:layout_height="162dp"
+            android:layout_margin="8dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:teamsTeamLogoFromTeamAbbr="@{team.abbr}" />
+
+        <TextView
+            android:id="@+id/teams_item_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{team.city+team.name}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/teams_item_logo"
+            app:layout_constraintTop_toTopOf="@+id/teams_item_logo"
+            tools:text="洛杉矶湖人" />
+
+        <TextView
+            android:id="@+id/players_item_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/teams_team_info,team.displayConference,team.division)}"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/teams_item_name"
+            app:layout_constraintTop_toBottomOf="@+id/teams_item_name"
+            tools:text="西部联盟\n太平洋分区" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

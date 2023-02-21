@@ -3,6 +3,8 @@ package com.tyhoo.android.nba.di
 import android.content.Context
 import com.tyhoo.android.nba.data.db.PlayerDao
 import com.tyhoo.android.nba.data.db.PlayerDatabase
+import com.tyhoo.android.nba.data.db.TeamDao
+import com.tyhoo.android.nba.data.db.TeamDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,5 +25,16 @@ class DatabaseModule {
     @Provides
     fun providePlayerDao(database: PlayerDatabase): PlayerDao {
         return database.playerDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideTeamDatabase(@ApplicationContext context: Context): TeamDatabase {
+        return TeamDatabase.getInstance(context)
+    }
+
+    @Provides
+    fun provideTeamDao(database: TeamDatabase): TeamDao {
+        return database.teamDao()
     }
 }
