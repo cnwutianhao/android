@@ -1,4 +1,4 @@
-package com.tyhoo.android.lol
+package com.tyhoo.android.lol.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -22,8 +22,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.tyhoo.android.lol.domain.Hero
 import com.tyhoo.android.lol.ui.theme.LolTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel by viewModels<HeroesViewModel>()

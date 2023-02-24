@@ -1,4 +1,4 @@
-package com.tyhoo.android.lol
+package com.tyhoo.android.lol.domain
 
 import com.google.gson.annotations.SerializedName
 

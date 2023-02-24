@@ -1,14 +1,22 @@
-package com.tyhoo.android.lol
+package com.tyhoo.android.lol.ui
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tyhoo.android.lol.Result
+import com.tyhoo.android.lol.domain.Hero
+import com.tyhoo.android.lol.domain.HeroesUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class HeroesViewModel : ViewModel() {
+@HiltViewModel
+class HeroesViewModel @Inject constructor(
+    private val useCase: HeroesUseCase
+) : ViewModel() {
 
     private val _heroes = mutableStateOf(emptyList<Hero>())
     val heroes: State<List<Hero>> = _heroes
@@ -29,7 +37,7 @@ class HeroesViewModel : ViewModel() {
     private fun loadHeroes() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                when (val result = NetworkManager.getHeroes()) {
+                when (val result = useCase.invoke()) {
                     is Result.Success -> {
                         _heroes.value = result.data.heroes
                         _version.value = result.data.version
