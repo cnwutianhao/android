@@ -1,8 +1,6 @@
 package com.tyhoo.android.lol.di
 
-import com.tyhoo.android.lol.data.ApiService
-import com.tyhoo.android.lol.data.HeroesRepository
-import com.tyhoo.android.lol.data.HeroesRepositoryImpl
+import com.tyhoo.android.lol.data.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,5 +15,11 @@ class RepositoryModule {
     @Provides
     fun provideHeroesRepository(service: ApiService): HeroesRepository {
         return HeroesRepositoryImpl(service)
+    }
+
+    @Singleton
+    @Provides
+    fun provideItemsRepository(service: ApiService): ItemsRepository {
+        return ItemsRepositoryImpl(service)
     }
 }

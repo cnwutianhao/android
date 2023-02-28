@@ -1,4 +1,4 @@
-package com.tyhoo.android.lol.data
+package com.tyhoo.android.lol.domain
 
 import androidx.annotation.DrawableRes
 

@@ -15,22 +15,23 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.tyhoo.android.lol.R
-import com.tyhoo.android.lol.data.BottomNavItem
+import com.tyhoo.android.lol.domain.BottomNavItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<HeroesViewModel>()
+    private val heroesViewModel by viewModels<HeroesViewModel>()
+    private val itemsViewModel by viewModels<ItemsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { LolApp(viewModel) }
+        setContent { LolApp(heroesViewModel, itemsViewModel) }
     }
 }
 
 @Composable
-fun LolApp(viewModel: HeroesViewModel) {
+fun LolApp(heroesViewModel: HeroesViewModel, itemsViewModel: ItemsViewModel) {
     val navController = rememberNavController()
     val items = listOf(
         BottomNavItem("heroes", "Heroes", R.drawable.lol_heroes),
@@ -68,10 +69,10 @@ fun LolApp(viewModel: HeroesViewModel) {
                 startDestination = "heroes"
             ) {
                 composable("heroes") {
-                    HeroesScreen(viewModel = viewModel)
+                    HeroesScreen(viewModel = heroesViewModel)
                 }
                 composable("items") {
-                    ItemsScreen()
+                    ItemsScreen(viewModel = itemsViewModel)
                 }
             }
         }
