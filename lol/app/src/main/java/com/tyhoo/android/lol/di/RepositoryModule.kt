@@ -22,4 +22,10 @@ class RepositoryModule {
     fun provideItemsRepository(service: ApiService): ItemsRepository {
         return ItemsRepositoryImpl(service)
     }
+
+    @Singleton
+    @Provides
+    fun provideHeroRepository(service: ApiService): HeroRepository {
+        return HeroRepositoryImpl(service)
+    }
 }

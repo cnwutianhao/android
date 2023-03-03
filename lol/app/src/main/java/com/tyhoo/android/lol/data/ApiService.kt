@@ -1,5 +1,6 @@
 package com.tyhoo.android.lol.data
 
+import com.tyhoo.android.lol.domain.HeroResponse
 import com.tyhoo.android.lol.domain.HeroesResponse
 import com.tyhoo.android.lol.domain.ItemsResponse
 import okhttp3.OkHttpClient
@@ -7,6 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -23,6 +25,13 @@ interface ApiService {
      */
     @GET("images/lol/act/img/js/items/items.js?ts=2794915")
     suspend fun getItems(): ItemsResponse
+
+    /**
+     * 英雄详情
+     * 请求地址：https://game.gtimg.cn/images/lol/act/img/js/hero/1.js?ts=2794916
+     */
+    @GET("images/lol/act/img/js/hero/{heroId}.js?ts=2794916")
+    suspend fun getHero(@Path("heroId") heroId: String): HeroResponse
 
     companion object {
         fun create(): ApiService {

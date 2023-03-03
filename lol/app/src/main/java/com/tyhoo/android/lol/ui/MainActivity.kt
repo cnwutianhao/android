@@ -27,15 +27,20 @@ class MainActivity : ComponentActivity() {
 
     private val heroesViewModel by viewModels<HeroesViewModel>()
     private val itemsViewModel by viewModels<ItemsViewModel>()
+    private val heroViewModel by viewModels<HeroViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { LolApp(heroesViewModel, itemsViewModel) }
+        setContent { LolApp(heroesViewModel, itemsViewModel, heroViewModel) }
     }
 }
 
 @Composable
-fun LolApp(heroesViewModel: HeroesViewModel, itemsViewModel: ItemsViewModel) {
+fun LolApp(
+    heroesViewModel: HeroesViewModel,
+    itemsViewModel: ItemsViewModel,
+    heroViewModel: HeroViewModel
+) {
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = MaterialTheme.colors.isLight
 
@@ -86,10 +91,14 @@ fun LolApp(heroesViewModel: HeroesViewModel, itemsViewModel: ItemsViewModel) {
                     startDestination = "heroes"
                 ) {
                     composable("heroes") {
-                        HeroesScreen(viewModel = heroesViewModel)
+                        HeroesScreen(viewModel = heroesViewModel, navController = navController)
                     }
                     composable("items") {
                         ItemsScreen(viewModel = itemsViewModel)
+                    }
+                    composable("hero/{heroId}") { backStackEntry ->
+                        val heroId = backStackEntry.arguments?.getString("heroId") ?: ""
+                        HeroScreen(viewModel = heroViewModel, heroId = heroId)
                     }
                 }
             }

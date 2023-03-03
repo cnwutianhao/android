@@ -1,6 +1,7 @@
 package com.tyhoo.android.lol.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -15,11 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.tyhoo.android.lol.domain.Hero
 
 @Composable
-fun HeroesScreen(viewModel: HeroesViewModel) {
+fun HeroesScreen(viewModel: HeroesViewModel, navController: NavController) {
+
     val heroes = viewModel.heroes.value
     val error = viewModel.error.value
     val version = viewModel.version.value
@@ -41,7 +44,9 @@ fun HeroesScreen(viewModel: HeroesViewModel) {
                 .padding(top = 8.dp)
         ) {
             items(heroes) { hero ->
-                HeroItem(hero = hero)
+                HeroItem(hero = hero, onItemClick = { selectedHero ->
+                    navController.navigate("hero/${selectedHero.heroId}")
+                })
             }
         }
 
@@ -52,12 +57,13 @@ fun HeroesScreen(viewModel: HeroesViewModel) {
 }
 
 @Composable
-fun HeroItem(hero: Hero) {
+fun HeroItem(hero: Hero, onItemClick: (Hero) -> Unit) {
     Card(
         shape = RoundedCornerShape(8.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
+            .clickable { onItemClick(hero) }
     ) {
         Row(
             modifier = Modifier.padding(8.dp),
