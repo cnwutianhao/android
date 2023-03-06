@@ -16,5 +16,6 @@ data class PlayerEntity(
     val playerPosition: String,
     val playerWeight: String,
     val teamCity: String,
+    val teamCode: String,
     val teamName: String
 )

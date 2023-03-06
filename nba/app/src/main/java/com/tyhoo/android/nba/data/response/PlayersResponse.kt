@@ -47,5 +47,6 @@ data class PlayersPlayerProfile(
  */
 data class PlayersTeamProfile(
     @field:SerializedName("city") val city: String,
+    @field:SerializedName("code") val code: String,
     @field:SerializedName("name") val name: String
 )

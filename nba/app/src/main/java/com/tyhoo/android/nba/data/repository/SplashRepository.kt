@@ -25,7 +25,7 @@ class SplashRepository @Inject constructor(private val service: AppService) {
                         player.playerProfile.displayName, player.playerProfile.height,
                         player.playerProfile.jerseyNo, player.playerProfile.playerId,
                         player.playerProfile.position, player.playerProfile.weight,
-                        player.teamProfile.city, player.teamProfile.name
+                        player.teamProfile.city, player.teamProfile.code, player.teamProfile.name
                     )
                 )
             }

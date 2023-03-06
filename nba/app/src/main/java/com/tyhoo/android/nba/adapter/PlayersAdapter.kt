@@ -1,12 +1,16 @@
 package com.tyhoo.android.nba.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.tyhoo.android.nba.data.NavToPlayer
 import com.tyhoo.android.nba.data.db.PlayerEntity
 import com.tyhoo.android.nba.databinding.ListItemPlayersBinding
+import com.tyhoo.android.nba.ui.home.HomeFragmentDirections
 
 class PlayersAdapter : ListAdapter<PlayerEntity, ViewHolder>(PlayerDiffCallback()) {
 
@@ -28,11 +32,23 @@ class PlayersAdapter : ListAdapter<PlayerEntity, ViewHolder>(PlayerDiffCallback(
     class PlayersViewHolder(
         private val binding: ListItemPlayersBinding
     ) : ViewHolder(binding.root) {
+        init {
+            binding.setClickListener { view ->
+                binding.player?.let { player -> navigateToPlayer(player, view) }
+            }
+        }
+
         fun bind(item: PlayerEntity) {
             binding.apply {
                 player = item
                 executePendingBindings()
             }
+        }
+
+        private fun navigateToPlayer(player: PlayerEntity, view: View) {
+            val direction = HomeFragmentDirections
+                .actionHomeFragmentToPlayerFragment(NavToPlayer(player.playerCode, player.teamCode))
+            view.findNavController().navigate(direction)
         }
     }
 }
