@@ -22,7 +22,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/player_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="8dp">
 
             <ImageView
                 android:id="@+id/player_avatar"
@@ -32,6 +33,94 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:playerAvatarFromPlayerId="@{viewModel.payload.player.playerProfile.playerId}" />
+
+            <TextView
+                android:id="@+id/player_display_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="2"
+                android:text="@{viewModel.payload.player.playerProfile.displayName}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/player_avatar"
+                app:layout_constraintTop_toTopOf="@id/player_avatar"
+                tools:text="勒布朗 詹姆斯" />
+
+            <TextView
+                android:id="@+id/player_first_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{String.format(@string/player_first_info, viewModel.payload.player.playerProfile.position, viewModel.payload.player.teamProfile.name, viewModel.payload.player.playerProfile.height, viewModel.payload.player.playerProfile.weight)}"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/player_display_name"
+                app:layout_constraintTop_toBottomOf="@id/player_display_name"
+                tools:text="前锋/湖人 \n2.06/113.4公斤" />
+
+            <View
+                android:id="@+id/player_divide_line1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:alpha="0.5"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_avatar" />
+
+            <ImageView
+                android:id="@+id/player_team_logo"
+                android:layout_width="81dp"
+                android:layout_height="81dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_divide_line1"
+                app:playerTeamLogoFromAbbr="@{viewModel.payload.player.teamProfile.abbr}" />
+
+            <TextView
+                android:id="@+id/player_jersey_no"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:gravity="center"
+                android:text="@{viewModel.payload.player.playerProfile.jerseyNo}"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@id/player_team_logo"
+                app:layout_constraintStart_toEndOf="@id/player_team_logo"
+                app:layout_constraintTop_toTopOf="@id/player_team_logo"
+                tools:text="6" />
+
+            <TextView
+                android:id="@+id/player_second_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:ellipsize="end"
+                android:text="@{String.format(@string/player_second_info, viewModel.payload.player.playerProfile.draftYear, viewModel.payload.player.playerProfile.experience, viewModel.payload.player.playerProfile.displayAffiliation, viewModel.payload.player.playerProfile.country)}"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/player_jersey_no"
+                app:layout_constraintTop_toTopOf="@id/player_jersey_no"
+                tools:text="选秀：2003 \n生涯：19 \n来自：St. Vincent-St. Mary HS (OH) \n国家：美国" />
+
+            <View
+                android:id="@+id/player_divide_line2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:alpha="0.5"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_team_logo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

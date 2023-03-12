@@ -18,6 +18,7 @@ data class Player(
 data class PlayerProfile(
     @field:SerializedName("code") val code: String,
     @field:SerializedName("country") val country: String,
+    @field:SerializedName("displayAffiliation") val displayAffiliation: String,
     @field:SerializedName("displayName") val displayName: String,
     @field:SerializedName("draftYear") val draftYear: String,
     @field:SerializedName("experience") val experience: String,

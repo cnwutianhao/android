@@ -13,4 +13,7 @@
 
     <string name="teams_team_info">%s联盟\n%s</string>
     <string name="teams_team_logo_url">https://china.nba.cn/media/img/teams/logos/%s_logo.svg</string>
+
+    <string name="player_first_info">%s/%s \n%s/%s</string>
+    <string name="player_second_info">选秀：%s \n生涯：%s \n来自：%s \n国家：%s</string>
 </resources>
