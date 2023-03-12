@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.tyhoo.android.nba.adapter.PlayersAdapter
 import com.tyhoo.android.nba.databinding.FragmentPlayersBinding
 import com.tyhoo.android.nba.viewmodel.PlayersViewModel
@@ -51,12 +54,21 @@ class PlayersFragment : Fragment() {
             DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         )
         binding.playerList.adapter = adapter
+        binding.playerList.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                viewModel.setScrollPosition(
+                    (binding.playerList.layoutManager as LinearLayoutManager)
+                        .findFirstVisibleItemPosition()
+                )
+            }
+        })
     }
 
     private fun requestData() {
         job?.cancel()
         job = lifecycleScope.launchWhenResumed {
-            viewModel.requestData(viewLifecycleOwner, adapter)
+            viewModel.requestData(viewLifecycleOwner, adapter, binding.playerList)
         }
     }
 }
