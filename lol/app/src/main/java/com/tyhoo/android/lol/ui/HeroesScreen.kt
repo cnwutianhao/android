@@ -80,8 +80,14 @@ fun HeroItem(hero: Hero, onItemClick: (Hero) -> Unit) {
             Spacer(modifier = Modifier.width(8.dp))
 
             Column {
-                Text(text = hero.name + " " + hero.title, fontWeight = FontWeight.Bold)
+                Text(
+                    text = hero.name + " " + hero.title,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
+
                 Spacer(modifier = Modifier.height(4.dp))
+
                 HeroRoles(roles = hero.roles)
             }
         }

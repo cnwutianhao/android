@@ -87,8 +87,14 @@ fun ItemItem(item: Item, onItemClick: (Item) -> Unit) {
             Spacer(modifier = Modifier.width(8.dp))
 
             Column {
-                Text(text = item.name, fontWeight = FontWeight.Bold)
+                Text(
+                    text = item.name,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
+
                 Spacer(modifier = Modifier.height(4.dp))
+
                 Text(
                     text = item.plaintext,
                     fontSize = 14.sp,
