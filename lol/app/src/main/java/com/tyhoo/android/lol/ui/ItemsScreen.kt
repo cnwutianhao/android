@@ -1,6 +1,7 @@
 package com.tyhoo.android.lol.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -15,11 +16,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.tyhoo.android.lol.domain.Item
 
 @Composable
-fun ItemsScreen(viewModel: ItemsViewModel) {
+fun ItemsScreen(
+    viewModel: ItemsViewModel,
+    itemViewModel: ItemViewModel,
+    navController: NavController
+) {
+
     val items = viewModel.items.value
     val error = viewModel.error.value
     val version = viewModel.version.value
@@ -41,7 +48,14 @@ fun ItemsScreen(viewModel: ItemsViewModel) {
                 .padding(top = 8.dp)
         ) {
             items(items) { item ->
-                ItemItem(item = item)
+                ItemItem(item = item, onItemClick = { selectedItem ->
+                    // 如果数据不为空，清空上一次的数据
+                    itemViewModel.selectedItem.value?.let {
+                        itemViewModel.selectedItem.value = null
+                    }
+                    itemViewModel.selectedItem.value = selectedItem
+                    navController.navigate("item")
+                })
             }
         }
 
@@ -52,12 +66,13 @@ fun ItemsScreen(viewModel: ItemsViewModel) {
 }
 
 @Composable
-fun ItemItem(item: Item) {
+fun ItemItem(item: Item, onItemClick: (Item) -> Unit) {
     Card(
         shape = RoundedCornerShape(8.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
+            .clickable { onItemClick(item) }
     ) {
         Row(
             modifier = Modifier.padding(8.dp),
