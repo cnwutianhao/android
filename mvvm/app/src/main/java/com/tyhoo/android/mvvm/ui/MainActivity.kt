@@ -1,7 +1,8 @@
-package com.tyhoo.android.mvvm
+package com.tyhoo.android.mvvm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tyhoo.android.mvvm.R
 import com.tyhoo.android.mvvm.util.LayoutUtils
 
 class MainActivity : AppCompatActivity() {

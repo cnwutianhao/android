@@ -31,7 +31,7 @@ object LayoutUtils {
                 insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
             val navigationBarWindow =
                 insets.getInsets(WindowInsetsCompat.Type.navigationBars() or WindowInsetsCompat.Type.displayCutout())
-            v.setPadding(0, statusBarWindow.top, 0, navigationBarWindow.bottom)
+            v.setPadding(0, statusBarWindow.top, 0, 0)
             insets
         }
     }

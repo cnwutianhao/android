@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">mvvm</string>
+    <string name="app_name">MVVM架构示例代码</string>
+
+    <string name="hero">英雄</string>
+    <string name="item">装备</string>
+    <string name="rune">铭文</string>
 </resources>

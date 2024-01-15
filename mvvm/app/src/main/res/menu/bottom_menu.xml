@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_hero"
+        android:icon="@drawable/hero"
+        android:title="@string/hero" />
+
+    <item
+        android:id="@+id/menu_item"
+        android:icon="@drawable/item"
+        android:title="@string/item" />
+
+    <item
+        android:id="@+id/menu_rune"
+        android:icon="@drawable/rune"
+        android:title="@string/rune" />
+
+</menu>
