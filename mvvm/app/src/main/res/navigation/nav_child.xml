@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_child"
+    app:startDestination="@id/hero_list_fragment">
+
+    <fragment
+        android:id="@+id/hero_list_fragment"
+        android:name="com.tyhoo.android.mvvm.ui.HeroListFragment"
+        android:label="HeroListFragment"
+        tools:layout="@layout/fragment_hero_list" />
+
+    <fragment
+        android:id="@+id/item_list_fragment"
+        android:name="com.tyhoo.android.mvvm.ui.ItemListFragment"
+        android:label="ItemListFragment"
+        tools:layout="@layout/fragment_item_list" />
+
+    <fragment
+        android:id="@+id/rune_list_fragment"
+        android:name="com.tyhoo.android.mvvm.ui.RuneListFragment"
+        android:label="RuneListFragment"
+        tools:layout="@layout/fragment_rune_list" />
+
+    <action
+        android:id="@+id/action_to_hero_list"
+        app:destination="@id/hero_list_fragment"
+        app:popUpTo="@id/nav_child"
+        app:popUpToInclusive="false" />
+
+    <action
+        android:id="@+id/action_to_item_list"
+        app:destination="@id/item_list_fragment"
+        app:popUpTo="@id/nav_child"
+        app:popUpToInclusive="false" />
+
+    <action
+        android:id="@+id/action_to_rune_list"
+        app:destination="@id/rune_list_fragment"
+        app:popUpTo="@id/nav_child"
+        app:popUpToInclusive="false" />
+
+</navigation>
