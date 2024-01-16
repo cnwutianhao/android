@@ -8,4 +8,6 @@
     <string name="hero_type">游戏职业：%1$s</string>
     <string name="hero_type2">游戏职业：%1$s、%2$s</string>
     <string name="hero_pay">综合信息：%1$s</string>
+
+    <string name="item_price">费用：%1$s</string>
 </resources>

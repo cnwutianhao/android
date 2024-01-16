@@ -24,7 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/avatar" />
+            tools:src="@drawable/hero_img" />
 
         <TextView
             android:id="@+id/item_hero_name"
@@ -47,7 +47,7 @@
             app:heroType2="@{hero.heroType2}"
             app:layout_constraintStart_toEndOf="@id/item_hero_avatar"
             app:layout_constraintTop_toBottomOf="@id/item_hero_name"
-            tools:text="坦克" />
+            tools:text="游戏职业：坦克" />
 
         <TextView
             android:id="@+id/item_hero_pay"
@@ -58,7 +58,7 @@
             app:heroPay="@{hero.payType}"
             app:layout_constraintStart_toEndOf="@id/item_hero_avatar"
             app:layout_constraintTop_toBottomOf="@id/item_hero_type"
-            tools:text="新手推荐" />
+            tools:text="综合信息：新手推荐" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
