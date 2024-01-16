@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.tyhoo.android.mvvm.R
+import com.tyhoo.android.mvvm.base.TAG
 import com.tyhoo.android.mvvm.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -52,9 +53,5 @@ class MainFragment : Fragment() {
 
             true
         }
-    }
-
-    companion object {
-        private const val TAG = "Tyhoo"
     }
 }
