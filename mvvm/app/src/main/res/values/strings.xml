@@ -4,4 +4,6 @@
     <string name="hero">英雄</string>
     <string name="item">装备</string>
     <string name="rune">铭文</string>
+
+    <string name="hero_type">%1$s，%2$s</string>
 </resources>

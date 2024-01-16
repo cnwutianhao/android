@@ -10,7 +10,9 @@ import androidx.navigation.fragment.NavHostFragment
 import com.tyhoo.android.mvvm.R
 import com.tyhoo.android.mvvm.base.TAG
 import com.tyhoo.android.mvvm.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
