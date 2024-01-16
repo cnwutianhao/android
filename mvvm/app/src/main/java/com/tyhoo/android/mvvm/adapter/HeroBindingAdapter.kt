@@ -21,13 +21,13 @@ fun bindHeroType(view: TextView, type: Int?, type2: Int?) {
         val role = Role.entries.toTypedArray().find { it.value == heroType }
         role?.let { heroRole ->
             val roleName = heroRole.type
-            view.text = roleName
+            view.text = view.context.getString(R.string.hero_type, roleName)
 
             type2?.let { heroType2 ->
                 val role2 = Role.entries.toTypedArray().find { it.value == heroType2 }
                 role2?.let { heroRole2 ->
                     val roleName2 = heroRole2.type
-                    view.text = view.context.getString(R.string.hero_type, roleName, roleName2)
+                    view.text = view.context.getString(R.string.hero_type2, roleName, roleName2)
                 }
             }
         }
@@ -39,7 +39,7 @@ fun bindHeroPay(view: TextView, pay: Int?) {
     pay?.let { heroPay ->
         val payType = Pay.entries.toTypedArray().find { it.value == heroPay }
         payType?.let { type ->
-            view.text = type.type
+            view.text = view.context.getString(R.string.hero_pay, type.type)
         }
     }
 }
