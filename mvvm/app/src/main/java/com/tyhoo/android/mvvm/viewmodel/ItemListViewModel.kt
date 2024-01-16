@@ -30,8 +30,8 @@ class ItemListViewModel @Inject constructor(
         owner: LifecycleOwner,
         rcv: RecyclerView,
         adapter: ItemAdapter
-    ) = Observer<List<ItemResponse>> { heroList ->
-        adapter.submitList(heroList)
+    ) = Observer<List<ItemResponse>> { itemList ->
+        adapter.submitList(itemList)
 
         val layoutManager = rcv.layoutManager as LinearLayoutManager
         layoutManager.scrollToPositionWithOffset(

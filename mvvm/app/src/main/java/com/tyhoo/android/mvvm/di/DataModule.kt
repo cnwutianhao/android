@@ -5,6 +5,8 @@ import com.tyhoo.android.mvvm.data.HeroListDataProvider
 import com.tyhoo.android.mvvm.data.HeroListDataProviderImpl
 import com.tyhoo.android.mvvm.data.ItemListDataProvider
 import com.tyhoo.android.mvvm.data.ItemListDataProviderImpl
+import com.tyhoo.android.mvvm.data.RuneListDataProvider
+import com.tyhoo.android.mvvm.data.RuneListDataProviderImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,5 +27,11 @@ class DataModule {
     @Provides
     fun provideItemListDataProvider(service: ApiService): ItemListDataProvider {
         return ItemListDataProviderImpl(service)
+    }
+
+    @Singleton
+    @Provides
+    fun provideRuneListDataProvider(service: ApiService): RuneListDataProvider {
+        return RuneListDataProviderImpl(service)
     }
 }

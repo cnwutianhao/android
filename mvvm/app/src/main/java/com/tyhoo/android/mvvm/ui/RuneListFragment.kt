@@ -5,13 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.tyhoo.android.mvvm.adapter.RuneAdapter
+import com.tyhoo.android.mvvm.base.RUNE_LIST_FIRST_VISIBLE_ITEM_POSITION
+import com.tyhoo.android.mvvm.base.RUNE_LIST_OFFSET
 import com.tyhoo.android.mvvm.databinding.FragmentRuneListBinding
+import com.tyhoo.android.mvvm.viewmodel.RuneListViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
 
 @AndroidEntryPoint
 class RuneListFragment : Fragment() {
 
     private lateinit var binding: FragmentRuneListBinding
+
+    private var job: Job? = null
+
+    private val viewModel: RuneListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,5 +32,32 @@ class RuneListFragment : Fragment() {
     ): View {
         binding = FragmentRuneListBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requestData()
+    }
+
+    private fun requestData() {
+        job?.cancel()
+        job = lifecycleScope.launchWhenResumed {
+            val adapter = RuneAdapter()
+            binding.runeList.adapter = adapter
+            viewModel.requestData(viewLifecycleOwner, binding.runeList, adapter)
+        }
+    }
+
+    override fun onDestroyView() {
+        // 页面销毁时记录列表滑动的位置
+        val layoutManager = binding.runeList.layoutManager as LinearLayoutManager
+        val findFirstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+        val firstVisibleView = layoutManager.findViewByPosition(findFirstVisibleItemPosition)
+        val offset = firstVisibleView?.top ?: 0
+        RUNE_LIST_FIRST_VISIBLE_ITEM_POSITION = findFirstVisibleItemPosition
+        RUNE_LIST_OFFSET = offset
+
+        job?.cancel()
+        super.onDestroyView()
     }
 }
