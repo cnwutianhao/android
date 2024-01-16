@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.tyhoo.android.mvvm.adapter.HeroAdapter
+import com.tyhoo.android.mvvm.base.HERO_LIST_FIRST_VISIBLE_ITEM_POSITION
+import com.tyhoo.android.mvvm.base.HERO_LIST_OFFSET
 import com.tyhoo.android.mvvm.databinding.FragmentHeroListBinding
 import com.tyhoo.android.mvvm.viewmodel.HeroListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,11 +44,19 @@ class HeroListFragment : Fragment() {
         job = lifecycleScope.launchWhenResumed {
             val adapter = HeroAdapter()
             binding.heroList.adapter = adapter
-            viewModel.requestData(viewLifecycleOwner, adapter)
+            viewModel.requestData(viewLifecycleOwner, binding.heroList, adapter)
         }
     }
 
     override fun onDestroyView() {
+        // 页面销毁时记录列表滑动的位置
+        val layoutManager = binding.heroList.layoutManager as LinearLayoutManager
+        val findFirstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+        val firstVisibleView = layoutManager.findViewByPosition(findFirstVisibleItemPosition)
+        val offset = firstVisibleView?.top ?: 0
+        HERO_LIST_FIRST_VISIBLE_ITEM_POSITION = findFirstVisibleItemPosition
+        HERO_LIST_OFFSET = offset
+
         job?.cancel()
         super.onDestroyView()
     }
