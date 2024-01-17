@@ -70,6 +70,9 @@ dependencies {
     // Glide.
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    // Jsoup.
+    implementation("org.jsoup:jsoup:1.17.2")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

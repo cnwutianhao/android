@@ -9,7 +9,13 @@
         android:id="@+id/hero_list_fragment"
         android:name="com.tyhoo.android.mvvm.ui.HeroListFragment"
         android:label="HeroListFragment"
-        tools:layout="@layout/fragment_hero_list" />
+        tools:layout="@layout/fragment_hero_list">
+
+        <action
+            android:id="@+id/action_hero_list_fragment_to_hero_detail_fragment"
+            app:destination="@id/hero_detail_fragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/item_list_fragment"
@@ -22,6 +28,18 @@
         android:name="com.tyhoo.android.mvvm.ui.RuneListFragment"
         android:label="RuneListFragment"
         tools:layout="@layout/fragment_rune_list" />
+
+    <fragment
+        android:id="@+id/hero_detail_fragment"
+        android:name="com.tyhoo.android.mvvm.ui.HeroDetailFragment"
+        android:label="HeroDetailFragment"
+        tools:layout="@layout/fragment_hero_detail">
+
+        <argument
+            android:name="heroIdName"
+            app:argType="string" />
+
+    </fragment>
 
     <action
         android:id="@+id/action_to_hero_list"

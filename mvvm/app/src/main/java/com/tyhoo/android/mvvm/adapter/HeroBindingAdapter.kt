@@ -3,6 +3,7 @@ package com.tyhoo.android.mvvm.adapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.tyhoo.android.mvvm.R
 
@@ -41,6 +42,15 @@ fun bindHeroPay(view: TextView, pay: Int?) {
         payType?.let { type ->
             view.text = view.context.getString(R.string.hero_pay, type.type)
         }
+    }
+}
+
+@BindingAdapter(value = ["heroDetailImg"])
+fun bindHeroDetailImg(view: ImageView, url: LiveData<String>?) {
+    url?.value?.let { heroImgUrl ->
+        Glide.with(view.context)
+            .load(heroImgUrl)
+            .into(view)
     }
 }
 

@@ -1,6 +1,8 @@
 package com.tyhoo.android.mvvm.di
 
 import com.tyhoo.android.mvvm.api.ApiService
+import com.tyhoo.android.mvvm.data.HeroDetailDataProvider
+import com.tyhoo.android.mvvm.data.HeroDetailDataProviderImpl
 import com.tyhoo.android.mvvm.data.HeroListDataProvider
 import com.tyhoo.android.mvvm.data.HeroListDataProviderImpl
 import com.tyhoo.android.mvvm.data.ItemListDataProvider
@@ -33,5 +35,11 @@ class DataModule {
     @Provides
     fun provideRuneListDataProvider(service: ApiService): RuneListDataProvider {
         return RuneListDataProviderImpl(service)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHeroDetailDataProvider(): HeroDetailDataProvider {
+        return HeroDetailDataProviderImpl()
     }
 }
