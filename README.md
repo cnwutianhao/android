@@ -1,5 +1,5 @@
 # Android Architecture Development
 
-### MVVM(Model-View-ViewModel)
+1. MVVM(Model-View-ViewModel)
 
-[Sample](https://github.com/cnwutianhao/android/tree/main/mvvm)
+   [Sample](https://github.com/cnwutianhao/android/tree/main/mvvm) - A sample app illustrating Android development best practices with MVVM Architecture.
