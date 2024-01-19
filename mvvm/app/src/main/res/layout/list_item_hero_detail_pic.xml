@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pic"
+            type="com.tyhoo.android.mvvm.data.HeroDetailPicResponse" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="442dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            app:heroDetailPic="@{pic.picUrl}"
+            tools:src="@drawable/hero_pic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{pic.picName}"
+            tools:text="银翎春语" />
+
+    </LinearLayout>
+
+</layout>

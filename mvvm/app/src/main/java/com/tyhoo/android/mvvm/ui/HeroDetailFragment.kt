@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.tyhoo.android.mvvm.adapter.HeroDetailCoverAdapter
+import com.tyhoo.android.mvvm.adapter.HeroDetailPicAdapter
+import com.tyhoo.android.mvvm.adapter.HeroDetailSkillAdapter
 import com.tyhoo.android.mvvm.databinding.FragmentHeroDetailBinding
 import com.tyhoo.android.mvvm.viewmodel.HeroDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,7 +49,18 @@ class HeroDetailFragment : Fragment() {
     private fun requestData() {
         job?.cancel()
         job = lifecycleScope.launch {
-            viewModel.requestData(viewLifecycleOwner, args.heroIdName)
+            val coverAdapter = HeroDetailCoverAdapter()
+            val skillAdapter = HeroDetailSkillAdapter()
+            val picAdapter = HeroDetailPicAdapter()
+            binding.heroDetailCoverList.adapter = coverAdapter
+            binding.heroDetailSkillList.adapter = skillAdapter
+            val picLayoutManager = LinearLayoutManager(requireContext())
+            picLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+            binding.heroDetailPicList.layoutManager = picLayoutManager
+            binding.heroDetailPicList.adapter = picAdapter
+            viewModel.requestData(
+                viewLifecycleOwner, args.heroIdName, coverAdapter, skillAdapter, picAdapter
+            )
         }
     }
 

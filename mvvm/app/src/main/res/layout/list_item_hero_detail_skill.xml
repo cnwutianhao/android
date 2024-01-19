@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="skill"
+            type="com.tyhoo.android.mvvm.data.HeroDetailSkillResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp">
+
+        <ImageView
+            android:id="@+id/hero_detail_skill_img"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="@null"
+            app:heroDetailSkillImg="@{skill.skillImgUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/skill_img" />
+
+        <TextView
+            android:id="@+id/hero_detail_skill_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{skill.skillName}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/hero_detail_skill_img"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="比翼同心" />
+
+        <TextView
+            android:id="@+id/hero_detail_skill_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{skill.skillDescription}"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/hero_detail_skill_img"
+            app:layout_constraintTop_toBottomOf="@id/hero_detail_skill_name"
+            tools:text="释放飞剑技能时，莫邪会配合干将的雄剑飞出雌剑造成等额伤害。雌雄剑命中敌方目标会分别叠加雌雄剑气，当飞剑命中被剑气缠绕的目标时，每道剑气额外造成100（+15%法术攻击）法术伤害，同一道剑气被同时多次激发时，后续伤害衰减至50%。干将莫邪普攻使用飞剑挥砍对方造成300（+25%法术攻击）法术伤害。" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

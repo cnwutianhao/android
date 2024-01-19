@@ -45,11 +45,20 @@ fun bindHeroPay(view: TextView, pay: Int?) {
     }
 }
 
-@BindingAdapter(value = ["heroDetailImg"])
-fun bindHeroDetailImg(view: ImageView, url: LiveData<String>?) {
-    url?.value?.let { heroImgUrl ->
+@BindingAdapter(value = ["heroDetailSkillImg"])
+fun bindHeroDetailSkillImg(view: ImageView, skillImgUrl: String?) {
+    skillImgUrl?.let { url ->
         Glide.with(view.context)
-            .load(heroImgUrl)
+            .load(url)
+            .into(view)
+    }
+}
+
+@BindingAdapter(value = ["heroDetailPic"])
+fun bindHeroDetailPic(view: ImageView, picUrl: String?) {
+    picUrl?.let { url ->
+        Glide.with(view.context)
+            .load(url)
             .into(view)
     }
 }
