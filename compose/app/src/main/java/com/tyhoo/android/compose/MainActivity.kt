@@ -16,7 +16,9 @@ import androidx.compose.ui.unit.dp
 import com.tyhoo.android.compose.ui.HomeScreen
 import com.tyhoo.android.compose.ui.theme.ComposeTheme
 import com.tyhoo.android.compose.util.ScreenUtils
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     )
 
                     val statusBarHeight = ScreenUtils.getStatusBarHeight(this@MainActivity)
-                    Column(modifier = Modifier.padding(top = statusBarHeight.dp)) {
+                    Column(modifier = Modifier.padding(top = (statusBarHeight - 32).dp)) {
                         HomeScreen()
                     }
                 }

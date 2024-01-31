@@ -1,5 +1,6 @@
 package com.tyhoo.android.compose.ui
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -66,7 +67,7 @@ fun HomeScreen() {
             startDestination = Screen.HeroList.route,
             Modifier.padding(innerPadding)
         ) {
-            composable(Screen.HeroList.route) { HeroListScreen() }
+            composable(Screen.HeroList.route) { HeroListScreen(modifier = Modifier.fillMaxSize()) }
             composable(Screen.ItemList.route) { ItemListScreen() }
             composable(Screen.RuneList.route) { RuneListScreen() }
         }
