@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.tyhoo.android.compose.ui.HomeScreen
 import com.tyhoo.android.compose.ui.theme.ComposeTheme
 import com.tyhoo.android.compose.util.ScreenUtils
 
@@ -34,6 +35,7 @@ class MainActivity : ComponentActivity() {
 
                     val statusBarHeight = ScreenUtils.getStatusBarHeight(this@MainActivity)
                     Column(modifier = Modifier.padding(top = statusBarHeight.dp)) {
+                        HomeScreen()
                     }
                 }
             }

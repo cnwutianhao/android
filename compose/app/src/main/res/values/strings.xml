@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">compose</string>
+
+    <string name="hero_list">英雄</string>
+    <string name="item_list">装备</string>
+    <string name="rune_list">铭文</string>
 </resources>
