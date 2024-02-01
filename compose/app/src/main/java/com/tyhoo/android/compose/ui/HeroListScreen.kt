@@ -1,7 +1,5 @@
 package com.tyhoo.android.compose.ui
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,8 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -82,7 +79,7 @@ fun HeroItem(hero: HeroResponse) {
                     else -> null
                 }
                 Text(
-                    text = "游戏职业：${role?.type}",
+                    text = stringResource(id = R.string.hero_type, role?.type ?: ""),
                     style = TextStyle(fontSize = 14.sp)
                 )
             } else {
@@ -105,7 +102,11 @@ fun HeroItem(hero: HeroResponse) {
                     else -> null
                 }
                 Text(
-                    text = "游戏职业：${role1?.type}，${role2?.type}",
+                    text = stringResource(
+                        id = R.string.hero_type2,
+                        role1?.type ?: "",
+                        role2?.type ?: ""
+                    ),
                     style = TextStyle(fontSize = 14.sp)
                 )
             }
@@ -120,7 +121,7 @@ fun HeroItem(hero: HeroResponse) {
                 }
                 // 综合信息
                 Text(
-                    text = "综合信息：${p?.type}",
+                    text = stringResource(id = R.string.hero_pay, p?.type ?: ""),
                     style = TextStyle(fontSize = 14.sp)
                 )
             }
@@ -131,29 +132,6 @@ fun HeroItem(hero: HeroResponse) {
 @Preview
 @Composable
 fun PreviewHeroItem() {
-    Row(modifier = Modifier.background(color = Color.White)) {
-        Image(
-            painter = painterResource(id = R.drawable.avatar),
-            contentDescription = null,
-            modifier = Modifier
-                .size(120.dp)
-                .padding(start = 8.dp, end = 8.dp, bottom = 8.dp)
-        )
-        Column(modifier = Modifier.padding(top = 8.dp, end = 8.dp)) {
-            Text(
-                text = "廉颇",
-                style = TextStyle(fontSize = 20.sp),
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "游戏职业：坦克",
-                style = TextStyle(fontSize = 14.sp)
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "综合信息：新手推荐",
-                style = TextStyle(fontSize = 14.sp)
-            )
-        }
-    }
+    val testHero = HeroResponse(105, "廉颇", "", "", 10, 0, 1, 2, "", 0)
+    HeroItem(hero = testHero)
 }
