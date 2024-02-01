@@ -67,7 +67,7 @@ fun HomeScreen() {
             Modifier.padding(innerPadding)
         ) {
             composable(Screen.HeroList.route) { HeroListScreen(modifier = Modifier.fillMaxSize()) }
-            composable(Screen.ItemList.route) { ItemListScreen() }
+            composable(Screen.ItemList.route) { ItemListScreen(modifier = Modifier.fillMaxSize()) }
             composable(Screen.RuneList.route) { RuneListScreen() }
         }
     }
