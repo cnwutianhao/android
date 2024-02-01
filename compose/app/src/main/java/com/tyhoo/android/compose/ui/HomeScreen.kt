@@ -66,9 +66,21 @@ fun HomeScreen() {
             startDestination = Screen.HeroList.route,
             Modifier.padding(innerPadding)
         ) {
-            composable(Screen.HeroList.route) { HeroListScreen(modifier = Modifier.fillMaxSize()) }
+            composable(Screen.HeroList.route) {
+                HeroListScreen(onHeroClick = { hero ->
+                    navController.navigate(
+                        Screen.HeroDetail.createRoute(heroIdName = hero.idName)
+                    )
+                }, modifier = Modifier.fillMaxSize())
+            }
             composable(Screen.ItemList.route) { ItemListScreen(modifier = Modifier.fillMaxSize()) }
             composable(Screen.RuneList.route) { RuneListScreen(modifier = Modifier.fillMaxSize()) }
+            composable(
+                route = Screen.HeroDetail.route,
+                arguments = Screen.HeroDetail.navArguments
+            ) {
+                HeroDetailScreen()
+            }
         }
     }
 }

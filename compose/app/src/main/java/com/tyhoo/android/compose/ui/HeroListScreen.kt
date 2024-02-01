@@ -1,5 +1,6 @@
 package com.tyhoo.android.compose.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -28,28 +29,32 @@ import com.tyhoo.android.compose.data.Role
 
 @Composable
 fun HeroListScreen(
+    onHeroClick: (HeroResponse) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HeroListViewModel = hiltViewModel()
 ) {
     val heroList by viewModel.heroList.observeAsState(initial = emptyList())
-    HeroListScreen(heroList = heroList, modifier)
+    HeroListScreen(heroList = heroList, modifier, onHeroClick = onHeroClick)
 }
 
 @Composable
 fun HeroListScreen(
     heroList: List<HeroResponse>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onHeroClick: (HeroResponse) -> Unit = {}
 ) {
     LazyColumn(modifier = modifier) {
         items(items = heroList) { hero ->
-            HeroItem(hero)
+            HeroItem(hero) {
+                onHeroClick(hero)
+            }
         }
     }
 }
 
 @Composable
-fun HeroItem(hero: HeroResponse) {
-    Row {
+fun HeroItem(hero: HeroResponse, onHeroClick: () -> Unit) {
+    Row(modifier = Modifier.clickable { onHeroClick() }) {
         // 英雄头像
         AsyncImage(
             model = "https://game.gtimg.cn/images/yxzj/img201606/heroimg/${hero.eName}/${hero.eName}-smallskin-1.jpg",
@@ -133,5 +138,5 @@ fun HeroItem(hero: HeroResponse) {
 @Composable
 fun PreviewHeroItem() {
     val testHero = HeroResponse(105, "廉颇", "", "", 10, 0, 1, 2, "", 0)
-    HeroItem(hero = testHero)
+    HeroItem(hero = testHero) {}
 }

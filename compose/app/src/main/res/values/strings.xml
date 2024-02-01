@@ -4,6 +4,7 @@
     <string name="hero_list">英雄</string>
     <string name="item_list">装备</string>
     <string name="rune_list">铭文</string>
+    <string name="hero_detail">英雄详情</string>
 
     <string name="hero_type">游戏职业：%1$s</string>
     <string name="hero_type2">游戏职业：%1$s、%2$s</string>
