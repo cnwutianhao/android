@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">compose</string>
+    <string name="app_name">Jetpack Compose</string>
 
     <string name="hero_list">英雄</string>
     <string name="item_list">装备</string>
