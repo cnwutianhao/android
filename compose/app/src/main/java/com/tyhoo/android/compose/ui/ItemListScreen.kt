@@ -1,8 +1,11 @@
 package com.tyhoo.android.compose.ui
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,7 +51,7 @@ fun ItemListScreen(
 
 @Composable
 fun ItemItem(item: ItemResponse) {
-    Row {
+    Row(modifier = Modifier.fillMaxWidth()) {
         // 装备图
         AsyncImage(
             model = "https://game.gtimg.cn/images/yxzj/img201606/itemimg/${item.itemId}.jpg",
@@ -80,5 +84,7 @@ fun ItemItem(item: ItemResponse) {
 fun PreviewItemItem() {
     val testItem =
         ItemResponse(1111, "铁剑", 1, 150, 250, "<p>+20物理攻击</p>", "<p>+20物理攻击</p>")
-    ItemItem(item = testItem)
+    Box(modifier = Modifier.background(color = Color.White)) {
+        ItemItem(item = testItem)
+    }
 }

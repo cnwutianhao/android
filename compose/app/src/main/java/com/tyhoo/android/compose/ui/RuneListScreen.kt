@@ -1,8 +1,11 @@
 package com.tyhoo.android.compose.ui
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,7 +53,7 @@ fun RuneListScreen(
 
 @Composable
 fun RuneItem(rune: RuneResponse) {
-    Row {
+    Row(modifier = Modifier.fillMaxWidth()) {
         // 铭文图
         AsyncImage(
             model = "https://game.gtimg.cn/images/yxzj/img201606/mingwen/${rune.mingId}.png",
@@ -103,5 +107,7 @@ fun RuneItem(rune: RuneResponse) {
 @Composable
 fun PreviewRuneItem() {
     val testRune = RuneResponse("1501", "red", "5", "圣人", "<p>法术攻击力+5.3</p>")
-    RuneItem(rune = testRune)
+    Box(modifier = Modifier.background(color = Color.White)) {
+        RuneItem(rune = testRune)
+    }
 }
