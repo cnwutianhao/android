@@ -1,6 +1,8 @@
 package com.tyhoo.android.compose.di
 
 import com.tyhoo.android.compose.api.ApiService
+import com.tyhoo.android.compose.data.HeroDetailDataProvider
+import com.tyhoo.android.compose.data.HeroDetailDataProviderImpl
 import com.tyhoo.android.compose.data.HeroListDataProvider
 import com.tyhoo.android.compose.data.HeroListDataProviderImpl
 import com.tyhoo.android.compose.data.ItemListDataProvider
@@ -33,5 +35,11 @@ class DataModule {
     @Provides
     fun provideRuneListDataProvider(service: ApiService): RuneListDataProvider {
         return RuneListDataProviderImpl(service)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHeroDetailDataProvider(): HeroDetailDataProvider {
+        return HeroDetailDataProviderImpl()
     }
 }

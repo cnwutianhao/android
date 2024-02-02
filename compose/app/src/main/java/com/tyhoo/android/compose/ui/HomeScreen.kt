@@ -79,7 +79,7 @@ fun HomeScreen() {
                 route = Screen.HeroDetail.route,
                 arguments = Screen.HeroDetail.navArguments
             ) {
-                HeroDetailScreen()
+                HeroDetailScreen(modifier = Modifier.fillMaxSize())
             }
         }
     }
