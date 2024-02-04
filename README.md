@@ -22,3 +22,7 @@
 
 This project was based on or inspired by these projects and so on:
 + [Sunflower](https://github.com/android/sunflower)
+
+## Repo Activity
+
+![Repo Activity](https://repobeats.axiom.co/api/embed/0c93f47c4ffe7d8adde4948691d5aa5890a2d1ec.svg "Repobeats analytics image")
