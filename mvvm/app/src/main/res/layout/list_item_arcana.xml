@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="rune"
-            type="com.tyhoo.android.mvvm.data.RuneResponse" />
+            name="arcana"
+            type="com.tyhoo.android.mvvm.data.ArcanaResponse" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,48 +15,48 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/item_rune_img"
+            android:id="@+id/item_arcana_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="16dp"
             android:contentDescription="@null"
+            app:arcanaImg="@{arcana.mingId}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:runeImg="@{rune.mingId}"
-            tools:src="@drawable/rune_img" />
+            tools:src="@drawable/arcana_img" />
 
         <TextView
-            android:id="@+id/item_rune_name"
+            android:id="@+id/item_arcana_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{rune.mingName}"
+            android:text="@{arcana.mingName}"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/item_rune_img"
-            app:layout_constraintTop_toTopOf="@id/item_rune_img"
+            app:layout_constraintStart_toEndOf="@id/item_arcana_img"
+            app:layout_constraintTop_toTopOf="@id/item_arcana_img"
             tools:text="圣人" />
 
         <TextView
-            android:id="@+id/item_rune_type"
+            android:id="@+id/item_arcana_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@id/item_rune_img"
-            app:layout_constraintTop_toBottomOf="@id/item_rune_name"
-            app:runeType="@{rune.mingType}"
+            app:arcanaType="@{arcana.mingType}"
+            app:layout_constraintStart_toEndOf="@id/item_arcana_img"
+            app:layout_constraintTop_toBottomOf="@id/item_arcana_name"
             tools:text="颜色：红" />
 
         <TextView
-            android:id="@+id/item_rune_grade"
+            android:id="@+id/item_arcana_grade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@id/item_rune_img"
-            app:layout_constraintTop_toBottomOf="@id/item_rune_type"
-            app:runeGrade="@{rune.mingGrade}"
+            app:arcanaGrade="@{arcana.mingGrade}"
+            app:layout_constraintStart_toEndOf="@id/item_arcana_img"
+            app:layout_constraintTop_toBottomOf="@id/item_arcana_type"
             tools:text="等级：五级" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

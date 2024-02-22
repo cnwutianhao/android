@@ -13,7 +13,7 @@
         android:fitsSystemWindows="true">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/item_list"
+            android:id="@+id/arcana_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:overScrollMode="never"
@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="2"
-            tools:listitem="@layout/list_item_item" />
+            tools:listitem="@layout/list_item_arcana" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

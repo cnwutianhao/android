@@ -7,13 +7,13 @@
         android:title="@string/hero" />
 
     <item
-        android:id="@+id/menu_item"
-        android:icon="@drawable/item"
-        android:title="@string/item" />
+        android:id="@+id/menu_equipment"
+        android:icon="@drawable/equipment"
+        android:title="@string/equipment" />
 
     <item
-        android:id="@+id/menu_rune"
-        android:icon="@drawable/rune"
-        android:title="@string/rune" />
+        android:id="@+id/menu_arcana"
+        android:icon="@drawable/arcana"
+        android:title="@string/arcana" />
 
 </menu>

@@ -8,29 +8,29 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tyhoo.android.mvvm.adapter.ItemAdapter
-import com.tyhoo.android.mvvm.base.ITEM_LIST_FIRST_VISIBLE_ITEM_POSITION
-import com.tyhoo.android.mvvm.base.ITEM_LIST_OFFSET
-import com.tyhoo.android.mvvm.databinding.FragmentItemListBinding
-import com.tyhoo.android.mvvm.viewmodel.ItemListViewModel
+import com.tyhoo.android.mvvm.adapter.EquipmentAdapter
+import com.tyhoo.android.mvvm.base.EQUIPMENT_LIST_FIRST_VISIBLE_ITEM_POSITION
+import com.tyhoo.android.mvvm.base.EQUIPMENT_LIST_OFFSET
+import com.tyhoo.android.mvvm.databinding.FragmentEquipmentListBinding
+import com.tyhoo.android.mvvm.viewmodel.EquipmentListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 
 @AndroidEntryPoint
-class ItemListFragment : Fragment() {
+class EquipmentListFragment : Fragment() {
 
-    private lateinit var binding: FragmentItemListBinding
+    private lateinit var binding: FragmentEquipmentListBinding
 
     private var job: Job? = null
 
-    private val viewModel: ItemListViewModel by viewModels()
+    private val viewModel: EquipmentListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentItemListBinding.inflate(inflater, container, false)
+        binding = FragmentEquipmentListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,20 +42,20 @@ class ItemListFragment : Fragment() {
     private fun requestData() {
         job?.cancel()
         job = lifecycleScope.launchWhenResumed {
-            val adapter = ItemAdapter()
-            binding.itemList.adapter = adapter
-            viewModel.requestData(viewLifecycleOwner, binding.itemList, adapter)
+            val adapter = EquipmentAdapter()
+            binding.equipmentList.adapter = adapter
+            viewModel.requestData(viewLifecycleOwner, binding.equipmentList, adapter)
         }
     }
 
     override fun onDestroyView() {
         // 页面销毁时记录列表滑动的位置
-        val layoutManager = binding.itemList.layoutManager as LinearLayoutManager
+        val layoutManager = binding.equipmentList.layoutManager as LinearLayoutManager
         val findFirstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
         val firstVisibleView = layoutManager.findViewByPosition(findFirstVisibleItemPosition)
         val offset = firstVisibleView?.top ?: 0
-        ITEM_LIST_FIRST_VISIBLE_ITEM_POSITION = findFirstVisibleItemPosition
-        ITEM_LIST_OFFSET = offset
+        EQUIPMENT_LIST_FIRST_VISIBLE_ITEM_POSITION = findFirstVisibleItemPosition
+        EQUIPMENT_LIST_OFFSET = offset
 
         job?.cancel()
         super.onDestroyView()

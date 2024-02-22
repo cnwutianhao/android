@@ -3,7 +3,6 @@ package com.tyhoo.android.mvvm.adapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.tyhoo.android.mvvm.R
 
@@ -37,6 +36,10 @@ fun bindHeroType(view: TextView, type: Int?, type2: Int?) {
 
 @BindingAdapter(value = ["heroPay"])
 fun bindHeroPay(view: TextView, pay: Int?) {
+    if (pay == null) {
+        view.text = ""
+    }
+
     pay?.let { heroPay ->
         val payType = Pay.entries.toTypedArray().find { it.value == heroPay }
         payType?.let { type ->

@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="equip"
-            type="com.tyhoo.android.mvvm.data.ItemResponse" />
+            name="equipment"
+            type="com.tyhoo.android.mvvm.data.EquipmentResponse" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,37 +15,37 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/item_item_img"
+            android:id="@+id/item_equipment_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="16dp"
             android:contentDescription="@null"
-            app:itemImg="@{equip.itemId}"
+            app:equipmentImg="@{equipment.itemId}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/item_img" />
+            tools:src="@drawable/equipment_img" />
 
         <TextView
-            android:id="@+id/item_item_name"
+            android:id="@+id/item_equipment_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{equip.itemName}"
+            android:text="@{equipment.itemName}"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/item_item_img"
-            app:layout_constraintTop_toTopOf="@id/item_item_img"
+            app:layout_constraintStart_toEndOf="@id/item_equipment_img"
+            app:layout_constraintTop_toTopOf="@id/item_equipment_img"
             tools:text="铁剑" />
 
         <TextView
-            android:id="@+id/item_item_price"
+            android:id="@+id/item_equipment_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:itemPrice="@{equip.totalPrice}"
-            app:layout_constraintStart_toEndOf="@id/item_item_img"
-            app:layout_constraintTop_toBottomOf="@id/item_item_name"
+            app:equipmentPrice="@{equipment.totalPrice}"
+            app:layout_constraintStart_toEndOf="@id/item_equipment_img"
+            app:layout_constraintTop_toBottomOf="@id/item_equipment_name"
             tools:text="费用：250" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

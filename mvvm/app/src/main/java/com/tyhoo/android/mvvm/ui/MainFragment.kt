@@ -39,12 +39,12 @@ class MainFragment : Fragment() {
                     navController.navigate(R.id.action_to_hero_list)
                 }
 
-                R.id.menu_item -> if (currentDestinationId != R.id.item_list_fragment) {
-                    navController.navigate(R.id.action_to_item_list)
+                R.id.menu_equipment -> if (currentDestinationId != R.id.equipment_list_fragment) {
+                    navController.navigate(R.id.action_to_equipment_list)
                 }
 
-                R.id.menu_rune -> if (currentDestinationId != R.id.rune_list_fragment) {
-                    navController.navigate(R.id.action_to_rune_list)
+                R.id.menu_arcana -> if (currentDestinationId != R.id.arcana_list_fragment) {
+                    navController.navigate(R.id.action_to_arcana_list)
                 }
 
                 else -> {}
