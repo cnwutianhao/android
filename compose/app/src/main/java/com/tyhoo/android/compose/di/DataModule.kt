@@ -1,14 +1,14 @@
 package com.tyhoo.android.compose.di
 
 import com.tyhoo.android.compose.api.ApiService
+import com.tyhoo.android.compose.data.ArcanaListDataProvider
+import com.tyhoo.android.compose.data.ArcanaListDataProviderImpl
+import com.tyhoo.android.compose.data.EquipmentListDataProvider
+import com.tyhoo.android.compose.data.EquipmentListDataProviderImpl
 import com.tyhoo.android.compose.data.HeroDetailDataProvider
 import com.tyhoo.android.compose.data.HeroDetailDataProviderImpl
 import com.tyhoo.android.compose.data.HeroListDataProvider
 import com.tyhoo.android.compose.data.HeroListDataProviderImpl
-import com.tyhoo.android.compose.data.ItemListDataProvider
-import com.tyhoo.android.compose.data.ItemListDataProviderImpl
-import com.tyhoo.android.compose.data.RuneListDataProvider
-import com.tyhoo.android.compose.data.RuneListDataProviderImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,14 +27,14 @@ class DataModule {
 
     @Singleton
     @Provides
-    fun provideItemListDataProvider(service: ApiService): ItemListDataProvider {
-        return ItemListDataProviderImpl(service)
+    fun provideEquipmentListDataProvider(service: ApiService): EquipmentListDataProvider {
+        return EquipmentListDataProviderImpl(service)
     }
 
     @Singleton
     @Provides
-    fun provideRuneListDataProvider(service: ApiService): RuneListDataProvider {
-        return RuneListDataProviderImpl(service)
+    fun provideArcanaListDataProvider(service: ApiService): ArcanaListDataProvider {
+        return ArcanaListDataProviderImpl(service)
     }
 
     @Singleton

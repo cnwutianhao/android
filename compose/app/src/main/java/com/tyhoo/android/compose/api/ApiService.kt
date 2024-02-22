@@ -1,8 +1,8 @@
 package com.tyhoo.android.compose.api
 
 import com.tyhoo.android.compose.data.HeroResponse
-import com.tyhoo.android.compose.data.ItemResponse
-import com.tyhoo.android.compose.data.RuneResponse
+import com.tyhoo.android.compose.data.EquipmentResponse
+import com.tyhoo.android.compose.data.ArcanaResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
@@ -16,10 +16,10 @@ interface ApiService {
     suspend fun heroList(): List<HeroResponse>
 
     @GET("web201605/js/item.json")
-    suspend fun itemList(): List<ItemResponse>
+    suspend fun equipmentList(): List<EquipmentResponse>
 
     @GET("web201605/js/ming.json")
-    suspend fun runeList(): List<RuneResponse>
+    suspend fun arcanaList(): List<ArcanaResponse>
 
     companion object {
         private const val BASE_URL = "https://pvp.qq.com/"

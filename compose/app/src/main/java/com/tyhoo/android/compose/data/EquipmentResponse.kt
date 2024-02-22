@@ -2,7 +2,7 @@ package com.tyhoo.android.compose.data
 
 import com.google.gson.annotations.SerializedName
 
-data class ItemResponse(
+data class EquipmentResponse(
     @field:SerializedName("item_id") val itemId: Int,
     @field:SerializedName("item_name") val itemName: String,
     @field:SerializedName("item_type") val itemType: Int,

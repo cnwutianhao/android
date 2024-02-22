@@ -26,37 +26,37 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.tyhoo.android.compose.R
 import com.tyhoo.android.compose.data.Grade
-import com.tyhoo.android.compose.data.RuneResponse
+import com.tyhoo.android.compose.data.ArcanaResponse
 import com.tyhoo.android.compose.data.Type
-import com.tyhoo.android.compose.viewmodel.RuneListViewModel
+import com.tyhoo.android.compose.viewmodel.ArcanaListViewModel
 
 @Composable
-fun RuneListScreen(
+fun ArcanaListScreen(
     modifier: Modifier = Modifier,
-    viewModel: RuneListViewModel = hiltViewModel()
+    viewModel: ArcanaListViewModel = hiltViewModel()
 ) {
-    val runeList by viewModel.runeList.observeAsState(initial = emptyList())
-    RuneListScreen(runeList = runeList, modifier)
+    val arcanaList by viewModel.arcanaList.observeAsState(initial = emptyList())
+    ArcanaListScreen(arcanaList = arcanaList, modifier)
 }
 
 @Composable
-fun RuneListScreen(
-    runeList: List<RuneResponse>,
+fun ArcanaListScreen(
+    arcanaList: List<ArcanaResponse>,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(modifier = modifier) {
-        items(items = runeList) { rune ->
-            RuneItem(rune)
+        items(items = arcanaList) { arcana ->
+            ArcanaItem(arcana)
         }
     }
 }
 
 @Composable
-fun RuneItem(rune: RuneResponse) {
+fun ArcanaItem(arcana: ArcanaResponse) {
     Row(modifier = Modifier.fillMaxWidth()) {
         // 铭文图
         AsyncImage(
-            model = "https://game.gtimg.cn/images/yxzj/img201606/mingwen/${rune.mingId}.png",
+            model = "https://game.gtimg.cn/images/yxzj/img201606/mingwen/${arcana.mingId}.png",
             contentDescription = null,
             modifier = Modifier
                 .size(120.dp)
@@ -66,28 +66,28 @@ fun RuneItem(rune: RuneResponse) {
         Column(modifier = Modifier.padding(top = 8.dp, end = 8.dp)) {
             // 铭文名称
             Text(
-                text = rune.mingName,
+                text = arcana.mingName,
                 style = TextStyle(fontSize = 20.sp)
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
             // 铭文颜色
-            val type = when (rune.mingType) {
+            val type = when (arcana.mingType) {
                 "red" -> Type.RED
                 "yellow" -> Type.BLUE
                 "blue" -> Type.GREEN
                 else -> null
             }
             Text(
-                text = stringResource(id = R.string.rune_type, type?.type ?: ""),
+                text = stringResource(id = R.string.arcana_type, type?.type ?: ""),
                 style = TextStyle(fontSize = 14.sp)
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
             // 铭文等级
-            val grade = when (rune.mingGrade) {
+            val grade = when (arcana.mingGrade) {
                 "1" -> Grade.ONE
                 "2" -> Grade.TWO
                 "3" -> Grade.THREE
@@ -96,7 +96,7 @@ fun RuneItem(rune: RuneResponse) {
                 else -> null
             }
             Text(
-                text = stringResource(id = R.string.rune_gradle, grade?.grade ?: ""),
+                text = stringResource(id = R.string.arcana_gradle, grade?.grade ?: ""),
                 style = TextStyle(fontSize = 14.sp)
             )
         }
@@ -105,9 +105,9 @@ fun RuneItem(rune: RuneResponse) {
 
 @Preview
 @Composable
-fun PreviewRuneItem() {
-    val testRune = RuneResponse("1501", "red", "5", "圣人", "<p>法术攻击力+5.3</p>")
+fun PreviewArcanaItem() {
+    val testArcana = ArcanaResponse("1501", "red", "5", "圣人", "<p>法术攻击力+5.3</p>")
     Box(modifier = Modifier.background(color = Color.White)) {
-        RuneItem(rune = testRune)
+        ArcanaItem(arcana = testArcana)
     }
 }

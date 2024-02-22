@@ -28,8 +28,8 @@ import com.tyhoo.android.compose.Screen
 fun HomeScreen() {
     val items = listOf(
         Screen.HeroList,
-        Screen.ItemList,
-        Screen.RuneList
+        Screen.EquipmentList,
+        Screen.ArcanaList
     )
 
     val navController = rememberNavController()
@@ -73,8 +73,8 @@ fun HomeScreen() {
                     )
                 }, modifier = Modifier.fillMaxSize())
             }
-            composable(Screen.ItemList.route) { ItemListScreen(modifier = Modifier.fillMaxSize()) }
-            composable(Screen.RuneList.route) { RuneListScreen(modifier = Modifier.fillMaxSize()) }
+            composable(Screen.EquipmentList.route) { EquipmentListScreen(modifier = Modifier.fillMaxSize()) }
+            composable(Screen.ArcanaList.route) { ArcanaListScreen(modifier = Modifier.fillMaxSize()) }
             composable(
                 route = Screen.HeroDetail.route,
                 arguments = Screen.HeroDetail.navArguments

@@ -25,36 +25,36 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.tyhoo.android.compose.R
-import com.tyhoo.android.compose.data.ItemResponse
-import com.tyhoo.android.compose.viewmodel.ItemListViewModel
+import com.tyhoo.android.compose.data.EquipmentResponse
+import com.tyhoo.android.compose.viewmodel.EquipmentListViewModel
 
 @Composable
-fun ItemListScreen(
+fun EquipmentListScreen(
     modifier: Modifier = Modifier,
-    viewModel: ItemListViewModel = hiltViewModel()
+    viewModel: EquipmentListViewModel = hiltViewModel()
 ) {
-    val itemList by viewModel.itemList.observeAsState(initial = emptyList())
-    ItemListScreen(itemList = itemList, modifier)
+    val equipmentList by viewModel.equipmentList.observeAsState(initial = emptyList())
+    EquipmentListScreen(equipmentList = equipmentList, modifier)
 }
 
 @Composable
-fun ItemListScreen(
-    itemList: List<ItemResponse>,
+fun EquipmentListScreen(
+    equipmentList: List<EquipmentResponse>,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(modifier = modifier) {
-        items(items = itemList) { item ->
-            ItemItem(item)
+        items(items = equipmentList) { equipment ->
+            EquipmentItem(equipment)
         }
     }
 }
 
 @Composable
-fun ItemItem(item: ItemResponse) {
+fun EquipmentItem(equipment: EquipmentResponse) {
     Row(modifier = Modifier.fillMaxWidth()) {
         // 装备图
         AsyncImage(
-            model = "https://game.gtimg.cn/images/yxzj/img201606/itemimg/${item.itemId}.jpg",
+            model = "https://game.gtimg.cn/images/yxzj/img201606/itemimg/${equipment.itemId}.jpg",
             contentDescription = null,
             modifier = Modifier
                 .size(120.dp)
@@ -64,7 +64,7 @@ fun ItemItem(item: ItemResponse) {
         Column(modifier = Modifier.padding(top = 8.dp, end = 8.dp)) {
             // 装备名称
             Text(
-                text = item.itemName,
+                text = equipment.itemName,
                 style = TextStyle(fontSize = 20.sp)
             )
 
@@ -72,7 +72,9 @@ fun ItemItem(item: ItemResponse) {
 
             // 装备总价
             Text(
-                text = stringResource(id = R.string.item_price, item.totalPrice.toString()),
+                text = stringResource(
+                    id = R.string.equipment_price, equipment.totalPrice.toString()
+                ),
                 style = TextStyle(fontSize = 14.sp)
             )
         }
@@ -81,10 +83,10 @@ fun ItemItem(item: ItemResponse) {
 
 @Preview
 @Composable
-fun PreviewItemItem() {
-    val testItem =
-        ItemResponse(1111, "铁剑", 1, 150, 250, "<p>+20物理攻击</p>", "<p>+20物理攻击</p>")
+fun PreviewEquipmentItem() {
+    val testEquipment =
+        EquipmentResponse(1111, "铁剑", 1, 150, 250, "<p>+20物理攻击</p>", "<p>+20物理攻击</p>")
     Box(modifier = Modifier.background(color = Color.White)) {
-        ItemItem(item = testItem)
+        EquipmentItem(equipment = testEquipment)
     }
 }
