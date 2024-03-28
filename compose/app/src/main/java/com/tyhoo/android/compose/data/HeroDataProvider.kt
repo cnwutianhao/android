@@ -39,7 +39,7 @@ class HeroDetailDataProviderImpl @Inject constructor() : HeroDetailDataProvider 
             // 英雄Id
             val heroId = heroId(doc)
             // 技能
-            val heroSkillList = heroSkillList(doc, heroId)
+            val heroSkillList = heroSkillList(doc)
             // 英雄皮肤
             val heroPicList = heroPicList(doc, heroId)
 
@@ -85,19 +85,23 @@ class HeroDetailDataProviderImpl @Inject constructor() : HeroDetailDataProvider 
         return heroCoverList
     }
 
-    private fun heroSkillList(doc: Document, heroId: String): List<HeroDetailSkillResponse> {
+    private fun heroSkillList(doc: Document): List<HeroDetailSkillResponse> {
         val heroSkillList = mutableListOf<HeroDetailSkillResponse>()
         val divSkillNames = doc.select("div.skill-show div.show-list p.skill-name b")
         val divSkillDescriptions = doc.select("div.skill-show div.show-list p.skill-desc")
+        val divSkillImages = mutableListOf<String>()
+        val imageElements = doc.select("ul.skill-u1 li img")
+        imageElements.map {
+            divSkillImages.add("https:" + it.attr("src"))
+        }
         divSkillNames.forEachIndexed { i, _ ->
             val name = divSkillNames[i].text()
             val description = divSkillDescriptions[i].text()
-            val imgId = heroId + i + "0"
-            val imgUrl = "https://game.gtimg.cn/images/yxzj/img201606/heroimg/$heroId/$imgId.png"
             if (name != "") {
-                heroSkillList.add(HeroDetailSkillResponse(name, description, imgUrl))
+                heroSkillList.add(HeroDetailSkillResponse(name, description, divSkillImages[i]))
             }
         }
+
         return heroSkillList
     }
 
