@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.tyhoo.android.mvvm.viewmodel.HeroListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +26,49 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="2"
             tools:listitem="@layout/list_item_hero" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@null"
+            android:src="@drawable/menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@null"
+            android:src="@drawable/search"
+            app:heroFabMenu="@{viewModel.showFabMenu}"
+            app:layout_constraintBottom_toTopOf="@+id/fab_menu"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_revert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@null"
+            android:src="@drawable/revert"
+            app:heroFabMenu="@{viewModel.showFabMenu}"
+            app:layout_constraintBottom_toTopOf="@+id/fab_search"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@null"
+            android:src="@drawable/top"
+            app:heroFabMenu="@{viewModel.showFabMenu}"
+            app:layout_constraintBottom_toTopOf="@+id/fab_revert"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

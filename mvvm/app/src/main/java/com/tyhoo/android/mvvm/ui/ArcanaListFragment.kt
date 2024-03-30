@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tyhoo.android.mvvm.adapter.ArcanaAdapter
@@ -23,7 +23,7 @@ class ArcanaListFragment : Fragment() {
 
     private var job: Job? = null
 
-    private val viewModel: ArcanaListViewModel by viewModels()
+    private val viewModel: ArcanaListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

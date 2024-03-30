@@ -1,8 +1,10 @@
 package com.tyhoo.android.mvvm.adapter
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.tyhoo.android.mvvm.R
 
@@ -63,6 +65,17 @@ fun bindHeroDetailPic(view: ImageView, picUrl: String?) {
         Glide.with(view.context)
             .load(url)
             .into(view)
+    }
+}
+
+@BindingAdapter(value = ["heroFabMenu"])
+fun bindHeroFabMenu(view: View, isShow: LiveData<Boolean>?) {
+    isShow?.let {
+        if (it.value == true) {
+            view.visibility = View.VISIBLE
+        } else {
+            view.visibility = View.GONE
+        }
     }
 }
 
