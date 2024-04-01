@@ -3,6 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="heroListViewModel"
+            type="com.tyhoo.android.mvvm.viewmodel.HeroListViewModel" />
+
+        <variable
+            name="equipmentListViewModel"
+            type="com.tyhoo.android.mvvm.viewmodel.EquipmentListViewModel" />
+
+        <variable
+            name="arcanaListViewModel"
+            type="com.tyhoo.android.mvvm.viewmodel.ArcanaListViewModel" />
+    </data>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/root_layout"
         android:name="androidx.navigation.fragment.NavHostFragment"
