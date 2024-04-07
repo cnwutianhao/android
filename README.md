@@ -16,7 +16,7 @@
 
 2. Jetpack Compose
 
-   [Sample](https://github.com/cnwutianhao/android/tree/main/compose) - A sample app illustrating Android development best practices with Jetpack Compose.
+   [Sample](https://github.com/cnwutianhao/android/tree/main/compose) - A fully functional Android app built entirely with Kotlin and Jetpack Compose.
 
 ## Acknowledgement
 
