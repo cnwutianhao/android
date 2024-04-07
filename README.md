@@ -21,7 +21,8 @@
 ## Acknowledgement
 
 This project was based on or inspired by these projects and so on:
-+ [Sunflower](https://github.com/android/sunflower)
++ [sunflower](https://github.com/android/sunflower)
++ [nowinandroid](https://github.com/android/nowinandroid)
 
 ## Repo Activity
 
