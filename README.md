@@ -1,6 +1,6 @@
 # Android
 
-:zap: Android Architecture Development :zap:
+:zap: Follows Android design and development best practices. :zap:
 
 ## Screenshots
 
