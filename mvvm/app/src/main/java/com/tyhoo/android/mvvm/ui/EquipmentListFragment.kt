@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tyhoo.android.mvvm.adapter.EquipmentAdapter
 import com.tyhoo.android.mvvm.base.EQUIPMENT_LIST_FIRST_VISIBLE_ITEM_POSITION
@@ -15,6 +17,7 @@ import com.tyhoo.android.mvvm.databinding.FragmentEquipmentListBinding
 import com.tyhoo.android.mvvm.viewmodel.EquipmentListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class EquipmentListFragment : Fragment() {
@@ -41,10 +44,12 @@ class EquipmentListFragment : Fragment() {
 
     private fun requestData() {
         job?.cancel()
-        job = lifecycleScope.launchWhenResumed {
-            val adapter = EquipmentAdapter()
-            binding.equipmentList.adapter = adapter
-            viewModel.requestData(viewLifecycleOwner, binding.equipmentList, adapter)
+        job = lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                val adapter = EquipmentAdapter()
+                binding.equipmentList.adapter = adapter
+                viewModel.requestData(viewLifecycleOwner, binding.equipmentList, adapter)
+            }
         }
     }
 

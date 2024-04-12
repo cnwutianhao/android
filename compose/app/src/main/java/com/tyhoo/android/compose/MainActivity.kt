@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.core.view.ViewCompat
 import com.tyhoo.android.compose.ui.HomeScreen
 import com.tyhoo.android.compose.ui.theme.ComposeTheme
 import dagger.hilt.android.AndroidEntryPoint

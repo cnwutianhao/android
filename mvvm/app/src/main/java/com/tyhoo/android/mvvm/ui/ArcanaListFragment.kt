@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tyhoo.android.mvvm.adapter.ArcanaAdapter
 import com.tyhoo.android.mvvm.base.ARCANA_LIST_FIRST_VISIBLE_ITEM_POSITION
@@ -15,6 +17,7 @@ import com.tyhoo.android.mvvm.databinding.FragmentArcanaListBinding
 import com.tyhoo.android.mvvm.viewmodel.ArcanaListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ArcanaListFragment : Fragment() {
@@ -41,10 +44,12 @@ class ArcanaListFragment : Fragment() {
 
     private fun requestData() {
         job?.cancel()
-        job = lifecycleScope.launchWhenResumed {
-            val adapter = ArcanaAdapter()
-            binding.arcanaList.adapter = adapter
-            viewModel.requestData(viewLifecycleOwner, binding.arcanaList, adapter)
+        job = lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                val adapter = ArcanaAdapter()
+                binding.arcanaList.adapter = adapter
+                viewModel.requestData(viewLifecycleOwner, binding.arcanaList, adapter)
+            }
         }
     }
 
