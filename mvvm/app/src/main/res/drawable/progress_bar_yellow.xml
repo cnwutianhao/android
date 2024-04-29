@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景进度条（黑色） -->
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#000000" /> <!-- 黑色背景 -->
+            <corners android:radius="5dp" /> <!-- 可选，设置圆角 -->
+            <size android:height="2dp" /> <!-- 可选，设置进度条厚度 -->
+        </shape>
+    </item>
+    <!-- 前景进度条（黄色） -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="#E7CA63" /> <!-- 黄色进度 -->
+                <corners android:radius="5dp" /> <!-- 与背景相同的圆角 -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>

@@ -2,11 +2,14 @@ package com.tyhoo.android.mvvm.adapter
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.tyhoo.android.mvvm.R
+import com.tyhoo.android.mvvm.data.HeroDetailCoverResponse
 
 @BindingAdapter(value = ["heroAvatarEName"])
 fun bindHeroAvatar(view: ImageView, eName: Int?) {
@@ -65,6 +68,26 @@ fun bindHeroDetailPic(view: ImageView, picUrl: String?) {
         Glide.with(view.context)
             .load(url)
             .into(view)
+    }
+}
+
+@BindingAdapter(value = ["heroDetailProgress"])
+fun bindHeroDetailProgress(bar: ProgressBar, cover: HeroDetailCoverResponse?) {
+    cover?.let {
+        bar.progress = it.bar.toInt()
+        when (it.label) {
+            "生存能力" -> bar.progressDrawable =
+                AppCompatResources.getDrawable(bar.context, R.drawable.progress_bar_blue)
+
+            "攻击伤害" -> bar.progressDrawable =
+                AppCompatResources.getDrawable(bar.context, R.drawable.progress_bar_yellow)
+
+            "技能效果" -> bar.progressDrawable =
+                AppCompatResources.getDrawable(bar.context, R.drawable.progress_bar_green)
+
+            "上手难度" -> bar.progressDrawable =
+                AppCompatResources.getDrawable(bar.context, R.drawable.progress_bar_red)
+        }
     }
 }
 
