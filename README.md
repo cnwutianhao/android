@@ -2,6 +2,13 @@
 
 :zap: Follows Android design and development best practices. :zap:
 
+In this branch you'll find:
++ User Interface built with **[Jetpack Compose](https://developer.android.com/jetpack/compose)**.
++ A single-activity architecture, using **[Navigation Compose](https://developer.android.com/jetpack/compose/navigation)**.
++ A presentation layer that contains a Compose screen (View) and a **ViewModel** per screen (or feature).
++ Reactive UIs using **[coroutines](https://kotlinlang.org/docs/coroutines-overview.html)** for asynchronous operations.
++ Dependency injection using **[Hilt](https://developer.android.com/training/dependency-injection/hilt-android)**.
+
 ## Screenshots
 
 <figure class="third">
