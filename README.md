@@ -5,7 +5,7 @@
 ## Screenshots
 
 <figure class="third">
-    <img src="https://github.com/cnwutianhao/android/assets/13990136/6d7747d2-9920-496d-838e-aa7fd37adbb6" width="160"/> <img src="https://github.com/cnwutianhao/android/assets/13990136/55718d0b-075f-4a4f-a65d-9f43be89551f" width="160"/> <img src="https://github.com/cnwutianhao/android/assets/13990136/924151fd-463b-4d59-9c0b-b6ad4cbf9bf3" width="160"/> <img src="https://github.com/cnwutianhao/android/assets/13990136/87dadf08-d71d-4a08-a3a2-0b2af79ec221" width="160"/> <img src="https://github.com/cnwutianhao/android/assets/13990136/298a062d-6ef7-42dc-8f97-ae236a546b9c" width="160"/>
+    <img src="https://github.com/cnwutianhao/android/assets/13990136/2663c70a-0b4e-43f8-8225-54769e45c34e" width="160"/> <img src="https://github.com/cnwutianhao/android/assets/13990136/74c1ff51-c621-4a1e-b5bd-ebbe42e6de6b" width="160"/> <img src="https://github.com/cnwutianhao/android/assets/13990136/53e51323-f085-4a6f-934d-f4752d0ec9c1" width="160"/> <img src="https://github.com/cnwutianhao/android/assets/13990136/2ad282a1-d534-44fd-94e8-d34b95a24fac" width="160"/> <img src="https://github.com/cnwutianhao/android/assets/13990136/1a0a0cdf-0311-4717-8c66-51e72f0fac73" width="160"/>
 </figure>
 
 ## Architecture
