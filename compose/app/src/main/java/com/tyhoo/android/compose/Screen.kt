@@ -22,7 +22,7 @@ sealed class Screen(
 
     data object HeroDetail : Screen(
         resourceId = R.string.hero_detail,
-        icon = 0,
+        icon = R.drawable.hero,
         route = "hero_detail/{heroIdName}",
         navArguments = listOf(navArgument("heroIdName") {
             type = NavType.StringType
